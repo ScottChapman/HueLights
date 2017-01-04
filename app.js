@@ -56,6 +56,7 @@ app.post('/SetColor', function (req,res) {
     if (colors.hasOwnProperty(body.color)) {
       var color = colors[body.color];
       color.on = true;
+      color.transitiontime = 0;
       client.publish(body.light,JSON.stringify(color));
       color.light = body.light;
       client.publish('lights',JSON.stringify(color));
