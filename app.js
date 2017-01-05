@@ -31,6 +31,10 @@ var colors = {
   blue: {bri: 254, hue: 46920, sat: 254},
 }
 
+var hubKeys = {
+  "9.32.241.244": "N6ZMYDGSMy4dyJi2M8xB4JJ6uP49bwM77TLa149S"
+};
+
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
 var cfenv = require('cfenv');
@@ -46,6 +50,73 @@ app.use(bodyParser.json());
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
+
+app.get('/HubConfig/:hubname', function(req,res) {
+  var hubname = req.params.hubname;
+  if (hubs.hasOwnProperty(hubname)) {
+    res.status(200).send(hubs[hubname]).end();
+  }
+  else {
+    res.status(400).send({status: "hubname not found"}).end();
+  }
+})
+
+app.get('/LightState/:lightname', function(req,res) {
+  var lightname = req.params.lightname;
+  var found = false;
+  console.log("Looking for light: " + lightname);
+  _.keys(hubs).forEach(function (hub) {
+    if (found) return;
+    _.keys(hubs[hub].lights).forEach(function (lightnum) {
+      if (found) return;
+      var light = hubs[hub].lights[lightnum];
+      console.log("Checking: " + light.name);
+      if (light.name.toUpperCase() === lightname.toUpperCase()) {
+        console.log("found!");
+        light.hub = hubs[hub].config;
+        res.status(200).send(light).end();
+        found = true;
+      }
+    })
+  });
+  if (!found) {
+    console.log("NOT found!");
+    res.status(400).send({status: "Light not found"}).end();
+  }
+})
+
+app.post('/LightState/:lightname', function(req,res) {
+  var lightname = req.params.lightname;
+  var body = req.body;
+  var found = false;
+  console.log("Looking for light: " + lightname);
+  _.keys(hubs).forEach(function (hub) {
+    if (found) return;
+    _.keys(hubs[hub].lights).forEach(function (lightnum) {
+      if (found) return;
+      var light = hubs[hub].lights[lightnum];
+      console.log("Checking: " + light.name);
+      if (light.name.toUpperCase() === lightname.toUpperCase()) {
+        console.log("found!");
+        light.number = lightnum;
+        var message = {
+          state: body,
+          light: light,
+          key: hubKeys[hubs[hub].config.ipaddress],
+          hub: hubs[hub].config
+        };
+        client.publish('SetLightState',JSON.stringify(message));
+        res.status(200).send({status: "Light State Update Request sent"}).end();
+        console.dir(message);
+        found = true;
+      }
+    })
+  });
+  if (!found) {
+    console.log("NOT found!");
+    res.status(400).send({status: "Light not found"}).end();
+  }
+})
 
 app.post('/SetColor', function (req,res) {
   var body = req.body;
@@ -71,6 +142,16 @@ app.post('/SetColor', function (req,res) {
   }
 })
 
+var hubs = {};
+
+client.subscribe('HubConfig/+');
+
+client.on('message', function(topic, message) {
+  var obj = JSON.parse(message);
+  delete obj.config.whitelist;
+  hubs[obj.config.name] = obj;
+  console.dir(obj);
+})
 // start server on the specified port and binding host
 var httpServer = http.createServer(app).listen(appEnv.port, '0.0.0.0', function() {
   // print a message when the server starts listening
