@@ -101,13 +101,23 @@ app.get('/LightState/:lightname', function(req,res) {
   })
 })
 
+function expand(state) {
+  if (state.hasOwnProperty("color") && colors.hasOwnProperty(state.color)) {
+    _.assign(state, colors[state.color]);
+    delete state.color;
+  }
+  if (!state.hasOwnProperty("transitiontime"))
+    state.transitiontime = 0;
+  return state;
+}
+
 app.post('/LightState/:lightname', function(req,res) {
   var lightname = req.params.lightname;
   var body = req.body;
   GetLightByName(lightname, function(err, light) {
     if (!err) {
         var message = {
-          state: body,
+          state: expand(body),
           light: light,
           key: hubKeys[light.hub.ipaddress],
         };
