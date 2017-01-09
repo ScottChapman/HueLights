@@ -62,6 +62,10 @@ app.get('/HubConfig/:hubname', function(req,res) {
   }
 })
 
+app.get('/HubNames', function(req,res) {
+  res.status(200).send(_.keys(hubs)).end();
+})
+
 app.get('/LightState/:lightname', function(req,res) {
   var lightname = req.params.lightname;
   var found = false;
