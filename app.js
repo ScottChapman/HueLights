@@ -66,8 +66,7 @@ app.get('/HubNames', function(req,res) {
   res.status(200).send(_.keys(hubs)).end();
 })
 
-app.get('/LightState/:lightname', function(req,res) {
-  var lightname = req.params.lightname;
+function GetLightByName(lightname, callback) {
   var found = false;
   console.log("Looking for light: " + lightname);
   _.keys(hubs).forEach(function (hub) {
@@ -79,48 +78,50 @@ app.get('/LightState/:lightname', function(req,res) {
       if (light.name.toUpperCase() === lightname.toUpperCase()) {
         console.log("found!");
         light.hub = hubs[hub].config;
-        res.status(200).send(light).end();
+        light.number = lightnum;
+        callback(null, light);
         found = true;
       }
     })
   });
-  if (!found) {
-    console.log("NOT found!");
-    res.status(400).send({status: "Light not found"}).end();
-  }
+  if (!found) callback(true, "No light found");
+}
+
+app.get('/LightState/:lightname', function(req,res) {
+  var lightname = req.params.lightname;
+  GetLightByName(lightname, function(err, light) {
+    if (err) {
+      console.log("NOT found!");
+      res.status(400).send({status: "Light not found"}).end();
+    }
+    else {
+      console.log("found!");
+      res.status(200).send(light).end();
+    }
+  })
 })
 
 app.post('/LightState/:lightname', function(req,res) {
   var lightname = req.params.lightname;
   var body = req.body;
-  var found = false;
-  console.log("Looking for light: " + lightname);
-  _.keys(hubs).forEach(function (hub) {
-    if (found) return;
-    _.keys(hubs[hub].lights).forEach(function (lightnum) {
-      if (found) return;
-      var light = hubs[hub].lights[lightnum];
-      console.log("Checking: " + light.name);
-      if (light.name.toUpperCase() === lightname.toUpperCase()) {
-        console.log("found!");
-        light.number = lightnum;
+  GetLightByName(lightname, function(err, light) {
+    if (!err) {
         var message = {
           state: body,
           light: light,
-          key: hubKeys[hubs[hub].config.ipaddress],
-          hub: hubs[hub].config
+          key: hubKeys[light.hub.ipaddress],
         };
         client.publish('SetLightState',JSON.stringify(message));
         res.status(200).send({status: "Light State Update Request sent"}).end();
+        console.log("Sending Message!");
         console.dir(message);
         found = true;
       }
+      else {
+        console.log("NOT found!");
+        res.status(400).send({status: "Light not found"}).end();
+      }
     })
-  });
-  if (!found) {
-    console.log("NOT found!");
-    res.status(400).send({status: "Light not found"}).end();
-  }
 })
 
 app.post('/SetColor', function (req,res) {
