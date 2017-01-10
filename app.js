@@ -13,6 +13,8 @@ var mqtt = require('mqtt')
 var _ = require('lodash');
 // var client  = mqtt.connect('mqtt:192.168.86.10')
 var client  = mqtt.connect('mqtt:scottchapman.no-ip.org')
+var swaggerUI = require('swagger-ui-express');
+var swaggerDoc = require('./swagger.json');
 
 // colors
 // bri	uint8	The brightness value to set the light to.
@@ -43,6 +45,7 @@ var cfenv = require('cfenv');
 // create a new express server
 var app = express();
 
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

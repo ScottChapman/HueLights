@@ -1,0 +1,131 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a pass-through service to control Philips Hue Lightbulbs.\n",
+        "version": "1.0.0",
+        "title": "Watson Workspace Philips Hue Controller",
+        "contact": {
+            "name": "scottchapman@us.ibm.com"
+        }
+    },
+    "host": "HueLights.mybluemix.net",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/HubNames": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/HubConfig/{HubName}": {
+            "get": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "HubName",
+                        "description": "The name of the hub",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/LightState/{LightName}": {
+            "get": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "LightName",
+                        "description": "The name of the light",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Set light state",
+                "description": "See http://huelights.mybluemix/public/HueLightsAPI.htm",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "LightName",
+                        "description": "The name of the light",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "The state of the light",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/LightStatus"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "LightStatus": {
+            "type": "object",
+            "required": [
+                "on"
+            ],
+            "properties": {
+                "on": {
+                    "type": "boolean",
+                    "default": true
+                },
+                "bri": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "hue": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "sat": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "saturationtime": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "effect": {
+                    "type": "string"
+                },
+                "alert": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

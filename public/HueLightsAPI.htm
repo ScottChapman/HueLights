@@ -1,0 +1,839 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[(new Date).getTime()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var s=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit"],l="api-",p=l+"ixn-";a(s,function(e,t){f[t]=o(l+t,!0,"api")}),f.addPageAction=o(l+"addPageAction",!0),f.setCurrentRouteName=o(l+"routeName",!0),t.exports=newrelic,f.interaction=function(){return(new r).get()};var d=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(p+"tracer",[Date.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return t.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){d[t]=o(p+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,(new Date).getTime()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o){if(!p.aborted){e&&e(n,r,o);for(var i=t(o),a=v(n),u=a.length,c=0;c<u;c++)a[c].apply(i,r);var f=s[w[n]];return f&&f.push([y,n,r,i]),i}}function d(e,t){b[e]=v(e).concat(t)}function v(e){return b[e]||[]}function g(e){return l[e]=l[e]||o(n)}function m(e,t){f(e,function(e,n){t=t||"feature",w[n]=t,t in s||(s[t]=[])})}var b={},w={},y={on:d,emit:n,get:g,listeners:v,context:t,buffer:m,abort:a,aborted:!1};return y}function i(){return new r}function a(){(s.api||s.feature)&&(p.aborted=!0,s=p.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},l={},p=t.exports=o();p.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!h++){var e=y.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return f.abort();c(b,function(t,n){e[t]||(e[t]=n)}),u("mark",["onload",a()],null,"api");var n=l.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===l.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=e("handle"),c=e(2),f=e("ee"),s=window,l=s.document,p="addEventListener",d="attachEvent",v=s.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:v,REQ:s.Request,EV:s.Event,PR:s.Promise,MO:s.MutationObserver},e(1);var m=""+location,b={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-998.min.js"},w=v&&g&&g[p]&&!/CriOS/.test(navigator.userAgent),y=t.exports={offset:a(),origin:m,features:{},xhrWrappable:w};l[p]?(l[p]("DOMContentLoaded",i,!1),s[p]("load",r,!1)):(l[d]("onreadystatechange",o),s[d]("onload",r)),u("mark",["firstbyte",a()],null,"api");var h=0},{}]},{},["loader"]);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="https://www.developers.meethue.com/sites/all/themes/developersMeethueBootstrap/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="description" content="1. Lights API 1.1. Get all lights URL /api//lights Method GET Version 1.0 Permission Whitelist" />
+<meta name="generator" content="Drupal 7 (http://drupal.org)" />
+<link rel="canonical" href="https://www.developers.meethue.com/documentation/lights-api" />
+<link rel="shortlink" href="https://www.developers.meethue.com/node/95" />
+  <title>Lights API | Philips Hue API</title>
+
+  <link type="text/css" rel="stylesheet" href="https://www.developers.meethue.com/sites/default/files/css/css_lQaZfjVpwP_oGNqdtWCSpJT1EMqXdMiU84ekLLxQnc4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.developers.meethue.com/sites/default/files/css/css_oU0ZFN2PX08--TYCPs3lKtUvuLCAuBveyUtRLySe-GQ.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.developers.meethue.com/sites/default/files/css/css_LR4ul4XWZWr2qQuGKLj70Ct8_8jGqLQqlzQTMJF310c.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.developers.meethue.com/sites/default/files/css/css_FvoZGM6RDIellbOE0FdC8WSMaaXeeeHZocOE4iuyHpo.css" media="all" />
+ 
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+<script>window.jQuery || document.write("<script src='/sites/all/modules/contrib/jquery_update/replace/jquery/1.7/jquery.js'>\x3C/script>")</script>
+<script src="https://www.developers.meethue.com/sites/default/files/js/js_aczm2rRgH_slWBPnvD3KMrK7rwa1i99HOq8IUAb99Co.js"></script>
+<script src="https://www.developers.meethue.com/sites/default/files/js/js_KCd8rbJYUruV1tRJnh4um34UYvyhlrSVCPR1jNko2h8.js"></script>
+<script src="https://www.developers.meethue.com/sites/default/files/js/js_hjaLYD5ZuV5ljPQ--B8-9xeLTfzF4yWEUGQKnN9Awgg.js"></script>
+<script src="https://www.developers.meethue.com/sites/default/files/js/js_g0CqLMhdKH09DiQxL9pWJnyvdIhkovxkpstTQJ-oOfc.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"developersMeethueBootstrap","theme_token":"5rn3EzutR8w4l5ViHZ2mxAAx1HlKvWSzgO9X38Ykzu0","js":{"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.7.2\/jquery.js":1,"0":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"misc\/form.js":1,"profiles\/apigee\/themes\/bootstrap\/js\/misc\/_collapse.js":1,"sites\/all\/themes\/developersMeethueBootstrap\/js\/meethue_global.js":1,"profiles\/apigee\/themes\/bootstrap\/js\/bootstrap.js":1,"1":1},"css":{"modules\/system\/system.base.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/contrib\/logintoboggan\/logintoboggan.css":1,"modules\/node\/node.css":1,"profiles\/apigee\/modules\/contrib\/views\/css\/views.css":1,"profiles\/apigee\/modules\/contrib\/ckeditor\/css\/ckeditor.css":1,"profiles\/apigee\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/themes\/developersMeethueBootstrap\/css\/style.css":1,"sites\/all\/themes\/developersMeethueBootstrap\/css\/bootstrap.min.css":1,"sites\/all\/themes\/developersMeethueBootstrap\/css\/meethue_style.css":1}},"urlIsAjaxTrusted":{"\/search\/site":true},"bootstrap":{"anchorsFix":1,"anchorsSmoothScrolling":1,"formHasError":1,"popoverEnabled":1,"popoverOptions":{"animation":1,"html":0,"placement":"right","selector":"","trigger":"click","triggerAutoclose":1,"title":"","content":"","delay":0,"container":"body"},"tooltipEnabled":1,"tooltipOptions":{"animation":1,"html":0,"placement":"auto left","selector":"","trigger":"hover focus","delay":0,"container":"body"}}});</script>
+  
+  <!-- HTML5 element support for IE6-8 -->
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+<body class="html not-front logged-in no-sidebars page-node page-node- page-node-95 node-type-documentation" >
+      
+<div id="wrapper">
+ <div id="main">
+  <div class="container-fluid">
+
+  <div class="row">
+        <header id="navbar" role="banner">
+        
+        <section class="header_top">
+            <div class="header_content">
+               <a class="philips-logo" href="http://www.philips.com" title="Philips Home">
+                 <img src="/sites/all/themes/developersMeethueBootstrap/images/philips-logo.png" alt="Philips Hue API" />
+               </a>              
+           </div>
+           
+        </section>
+        
+        <div>
+          <div>
+                          <a class="logo navbar-btn pull-left" href="/" title="Home">
+                <img src="https://www.developers.meethue.com/sites/all/themes/developersMeethueBootstrap/logo.png" alt="Philips Hue API" />
+              </a>
+                      </div>
+        
+          
+        
+          <div class="navbar-collapse">
+              <nav role="navigation">                  
+                        <div class="row">
+                          <div class="" align=right style="padding-right: 10px; padding-top: 22px;">
+                                 <form action="/search/site" method="post" id="search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-tan3FXFYRYvhrT3wyTEhZ-1ZxHEFQ-M8mR-khuHfeJg" />
+<input type="hidden" name="form_token" value="R1wlrfPhsP92avSQcShveDqPPjyZP6PduWaYzej1o2U" />
+<input type="hidden" name="form_id" value="search_form" />
+<div class="input-group"><input placeholder="Search" class="search-query span2 form-control form-text" type="search" placeholder="search" autocapitalize="off" autocorrect="off" id="edit-keys" name="keys" value="" size="40" maxlength="255" /><span class="input-group-btn"><button type="hidden" class="btn btn-primary">Search</button></span></div><button class="element-invisible btn btn-primary form-submit" style="display:none" type="hidden" id="edit-submit" name="op" value="Search">Search</button>
+</div></form>                   
+                             </div>
+                              <img id="colorgradient" src="/sites/all/themes/meethue/images/hue-color-line.png" >
+                          </div>
+                     </nav>
+               </div>      
+              <div class="orangeMenu" id="breadcrumb-navbar22">
+                                    <span><a href="/user/41045/edit"><span class="glyphicon"></span>&nbsp;&nbsp; Edit Profile</a></span>&nbsp;
+                     <span><a href="/user/logout"><span class="glyphicon"></span>&nbsp;&nbsp; Logout</a></span>&nbsp;        
+                           
+                      
+              </div>
+        
+               
+          </div>   <!-- End of Container -->
+        </header>   
+</div>  <!-- End of Header Row -->
+
+<div class="row" style="padding-top: 24px">
+    <div class="col-md-3" style="padding-left: 0px; padding-top: 0px;">
+            <div style="position: static; top: 20px;" class="span3 hue-navigation well" data-role="hue-navigation">  
+            
+            <div class="nav-collapse"><ul class="menu nav"><li class="first last leaf"><a href="/" title="Go to the home screen">Home</a></li>
+</ul></div>            
+            <ul class="nav nav-list">
+              <li class="divider"></li>
+            </ul>
+          <div class="nav-collapse"><ul class="menu nav"><li class="first last collapsed"><a href="/documentation/getting-started">Getting started</a></li>
+</ul></div>           
+          <div class="nav-collapse"><ul class="menu nav"><li class="first last collapsed"><a href="/application-design-guidance">Application Design Guidance</a></li>
+</ul></div>            
+          <div class="nav-collapse"><ul class="menu nav"><li><a href="/philips-hue-api" data-target="#">Philips hue API</a><ul><li class="first leaf"><a href="/documentation/terms-use">Terms of use</a></li>
+<li class="leaf"><a href="/documentation/datatypes-and-time-patterns">Datatypes and Time Patterns</a></li>
+<li><a href="/documentation/lights-api" data-target="#" class="active">1. Lights</a><ul><li class="first leaf"><a href="/documentation/lights-api#11_get_all_lights" class="active">■ Get all lights</a></li>
+<li class="leaf"><a href="/documentation/lights-api#12_get_new_lights" class="active">■ Get new lights</a></li>
+<li class="leaf"><a href="/documentation/lights-api#13_search_for_new_lights" class="active">■ Search for new lights</a></li>
+<li class="leaf"><a href="/documentation/lights-api#14_get_light_attributes_and_state" class="active">■ Get lights attributes and state</a></li>
+<li class="leaf"><a href="/documentation/lights-api#15_set_light_attributes_rename" class="active">■ Set lights attributes (rename)</a></li>
+<li class="leaf"><a href="/documentation/lights-api#16_set_light_state" class="active">■ Set light state</a></li>
+<li class="last leaf active-trail active"><a href="/documentation/lights-api#17_delete_lights" class="active-trail active">■ Delete Light</a></li>
+</ul></li>
+<li class="collapsed"><a href="/documentation/groups-api">2. Groups</a></li>
+<li class="collapsed"><a href="/documentation/schedules-api-0">3. Schedules</a></li>
+<li class="collapsed"><a href="/documentation/scenes-api">4. Scenes</a></li>
+<li class="collapsed"><a href="/documentation/sensors-api">5. Sensors</a></li>
+<li class="collapsed"><a href="/documentation/rules-api">6. Rules</a></li>
+<li class="collapsed"><a href="/documentation/configuration-api">7. Configuration</a></li>
+<li class="collapsed"><a href="/documentation/info-api">8. Info</a></li>
+<li class="leaf"><a href="/documentation/resourcelinks-api">9. Resourcelinks</a></li>
+<li class="leaf"><a href="/documentation/capabilities-api">10. Capabilities</a></li>
+<li class="leaf"><a href="/content/remote-api">&gt;&gt;&gt;&gt; Remote API &gt;&gt;&gt;&gt;</a></li>
+<li class="leaf"><a href="/documentation/error-messages">Error messages</a></li>
+<li class="leaf"><a href="/documentation/message-structure-and-response-0">Message Structure and Response</a></li>
+<li class="collapsed"><a href="/documentation/supported-devices">Supported Devices</a></li>
+<li class="leaf"><a href="/documentation/changelog">Changelog</a></li>
+<li class="last leaf"><a href="/documentation/glossary">Glossary</a></li>
+</ul></li>
+</ul></div>             
+          <div class="nav-collapse"><ul class="menu nav"><li class="first last collapsed"><a href="/tools-and-sdks">Tools and SDKs</a></li>
+</ul></div>           
+          <div class="nav-collapse"><ul class="menu nav"><li class="first last collapsed"><a href="/find-answers">Find Answers</a></li>
+</ul></div>             
+          <div class="nav-collapse"><ul class="menu nav"><li class="first last collapsed"><a href="/hue-developers">Philips hue developers &amp; apps</a></li>
+</ul></div>          <div class="nav-collapse"><ul class="menu nav"><li class="first last leaf"><a href="/documentation/hue-team-vacancies">Job Vacancies</a></li>
+</ul></div>          <div class="nav-collapse"><ul class="menu nav"><li class="first last leaf"><a href="https://developers.meethue.com/forum">Forum</a></li>
+</ul></div>            
+            </div>
+    </div> <!-- End of Menu Column -->
+    <div class="col-md-9" style="padding-left: 30px;">
+            
+                <div class="row">
+            
+                              
+   
+                                                                                                                                                                    <div class="region region-content">
+    <section id="block-system-main" class="block block-system clearfix">
+
+      
+  <div id="node-95" class="node node-documentation clearfix" about="/documentation/lights-api" typeof="sioc:Item foaf:Document">
+
+  
+      <span property="dc:title" content="Lights API" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+  <div class="content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h1>1. Lights API</h1>
+<h2 id="11_get_all_lights">1.1. Get all lights</h2>
+<table>
+<thead>
+<tr>
+<th><strong>URL</strong></th>
+<th><code>/api/&lt;username&gt;/lights</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Method</td>
+<td style="text-align: left;"><code>GET</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Permission</td>
+<td style="text-align: left;">Whitelist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="111_description">1.1.1. Description</h3>
+<p>Gets a list of all lights that have been discovered by the bridge.</p>
+<h3 id="112_response">1.1.2. Response</h3>
+<p>Returns a list of all lights in the system. As of <code>1.3</code> the full light resource is returned from the bridge. As of <code>1.4</code> the uniqueid is returned and from <code>1.7</code> the manufacturername also.</p>
+<p><b>Note:</b> For bridge versions &lt; <code>1.3</code> only the name and light identifier are returned. As from version <code>1.9</code> <b>luminaireuniqueid</b> is returned. As from <code>1.11</code> point symbols are no longer returned.</p>
+<p>If there are no lights in the system then the bridge will return an empty object, {}.</p>
+<h3 id="113_response_example">1.1.3. Response example</h3>
+<div class="highlight">
+<pre>
+<span class="p">{</span>
+
+    <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;on&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;bri&quot;</span><span class="p">:</span> <span class="mi">144</span><span class="p">,</span>
+            <span class="nt">&quot;hue&quot;</span><span class="p">:</span> <span class="mi">13088</span><span class="p">,</span>
+            <span class="nt">&quot;sat&quot;</span><span class="p">:</span> <span class="mi">212</span><span class="p">,</span>
+            <span class="nt">&quot;xy&quot;</span><span class="p">:</span> <span class="p">[0.5128,0.4147],</span>
+            <span class="nt">&quot;ct&quot;</span><span class="p">:</span> <span class="mi">467</span><span class="p">,</span>
+            <span class="nt">&quot;alert&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;effect&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;colormode&quot;</span><span class="p">:</span> <span class="s2">&quot;xy&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;reachable&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Extended color light&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hue Lamp 1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;modelid&quot;</span><span class="p">:</span> <span class="s2">&quot;LCT001&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;swversion&quot;</span><span class="p">:</span> <span class="s2">&quot;66009461&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;pointsymbol&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;2&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;3&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;4&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;5&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;6&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;7&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;8&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;2&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;on&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;bri&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;hue&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;sat&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;xy&quot;</span><span class="p">:</span> <span class="p">[0,0],</span>
+            <span class="nt">&quot;ct&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;alert&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;effect&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;colormode&quot;</span><span class="p">:</span> <span class="s2">&quot;hs&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;reachable&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Extended color light&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hue Lamp 2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;modelid&quot;</span><span class="p">:</span> <span class="s2">&quot;LCT001&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;swversion&quot;</span><span class="p">:</span> <span class="s2">&quot;66009461&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;pointsymbol&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;2&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;3&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;4&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;5&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;6&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;7&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;8&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="12_get_new_lights">1.2. Get new lights</h2>
+<table>
+<thead>
+<tr>
+<th><strong>URL</strong></th>
+<th><code>/api/&lt;username&gt;/lights/new</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Method</td>
+<td style="text-align: left;"><code>GET</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Permission</td>
+<td style="text-align: left;">Whitelist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="121_description">1.2.1. Description</h3>
+<p>Gets a list of lights that were discovered the last time a <a href="#13_search_for_new_lights">search for new lights</a> was performed. The list of new lights is always deleted when a new search is started.</p>
+<h3 id="122_response">1.2.2. Response</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Lastscan</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Returns &ldquo;active&rdquo; if a scan is currently on-going, &ldquo;none&rdquo; if a scan has not been performed since the bridge was powered on, or else the date and time that the last scan was completed in ISO 8601:2004 format (YYYY-MM-DDThh:mm:ss).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="123_response_example">1.2.3. Response example</h3>
+<div class="highlight">
+<pre>
+<code class="json"><span class="p">{</span>
+	<span class="nt">&quot;7&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hue Lamp 7&quot;</span><span class="p">},</span>
+	<span class="nt">&quot;8&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Hue Lamp 8&quot;</span><span class="p">},</span>
+	<span class="nt">&quot;lastscan&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-10-29T12:00:00&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="13_search_for_new_lights">1.3. Search for new lights</h2>
+<table>
+<thead>
+<tr>
+<th><strong>URL</strong></th>
+<th><code>/api/&lt;username&gt;/lights</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Method</td>
+<td style="text-align: left;"><code>POST</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Permission</td>
+<td style="text-align: left;">Whitelist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="131_description">1.3.1. Description</h3>
+<p>Starts a search for new lights. As of <code>1.3</code> will also find switches (e.g. &quot;tap&quot;)</p>
+<p>The bridge will open the network for 40s. The overall search might take longer since the configuration of (multiple) new devices can take longer. If many devices are found the command will have to be issued a second time after discovery time has elapsed.&nbsp;If the command is received again during search the search will continue for at least an additional 40s.&nbsp;</p>
+<p>When the search has finished, new lights will be available using the <a href="#12_get_new_lights">get new lights</a> command. In addition, the new lights will now be available by calling <a href="#11_get_all_lights">get all lights</a> or by calling <a href="groups-api#23_get_group_attributes">get group attributes</a> on group 0. Group 0 is a special group that cannot be deleted and will always contain all lights known by the bridge.</p>
+<h3 id="132_response&quot;">1.3.2. Body as of <code>1.1</code> (Optional)</h3>
+<div class="highlight">
+<pre>
+<span class="p">{</span><span class="nt">&quot;deviceid&quot;:[&quot;45AF34&quot;,&quot;543636&quot;,&quot;34AFBE&quot;]</span><span class="p">}</span> 
+</pre></div>
+<p><b>Note</b>:&nbsp; The maxiumum number of serial numbers in any request is 10.</p>
+<h3 id="133_response">1.3.3. Response</h3>
+<p>Contains a list with a single item that details whether the search started successfully.</p>
+<h3 id="134_response_example">1.3.4. Response example</h3>
+<div class="highlight">
+<pre>
+<code class="json"><span class="p">[</span> <span class="p">{</span> <span class="nt">&quot;success&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;/lights&quot;</span><span class="p">:</span> <span class="s2">&quot;Searching for new devices&quot;</span> <span class="p">}</span> <span class="p">}</span> <span class="p">]</span>
+</code></pre></div>
+<h2 id="14_get_light_attributes_and_state">1.4. Get light attributes and state</h2>
+<table>
+<thead>
+<tr>
+<th><strong>URL</strong></th>
+<th><code>/api/&lt;username&gt;/lights/&lt;id&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Method</td>
+<td style="text-align: left;"><code>GET</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Permission</td>
+<td style="text-align: left;">Whitelist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="141_description">1.4.1. Description</h3>
+<p>Gets the attributes and state of a given light.</p>
+<h3 id="142_response">1.4.2. Response</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">state object</td>
+<td style="text-align: left;">Details the state of the light, see the state table below for more details.</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">A fixed name describing the type of light e.g. &ldquo;Extended color light&rdquo;.</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string 0, 32</td>
+<td style="text-align: left;">A unique, editable name given to the light.</td>
+</tr>
+<tr>
+<td style="text-align: left;">modelid</td>
+<td style="text-align: left;">string 6, 6</td>
+<td style="text-align: left;">The hardware model of the light.</td>
+</tr>
+<tr>
+<td style="text-align: left;">uniqueid</td>
+<td style="text-align: left;">string 6, 32</td>
+<td style="text-align: left;">As of <code>1.4</code>. Unique id of the device. The MAC address of the device with a unique endpoint id in the form: AA:BB:CC:DD:EE:FF:00:11-XX</td>
+</tr>
+<tr>
+<td style="text-align: left;">manufacturername</td>
+<td style="text-align: left;">string 6, 32</td>
+<td style="text-align: left;">As of <code>1.7</code>. The manufacturer name.</td>
+</tr>
+<tr>
+<td style="text-align: left;">luminaireuniqueid</td>
+<td style="text-align: left;">string 6, 32</td>
+<td style="text-align: left;">As of <code>1.9</code>. Unique ID of the luminaire the light is a part of in the format: AA:BB:CC:DD-XX-YY. &nbsp;AA:BB:, ... represents the hex of the luminaireid, XX the lightsource position (incremental but may contain gaps) and YY the lightpoint position (index of light in luminaire group). &nbsp;A gap in the lightpoint position indicates an incomplete luminaire (light search required to discover missing light points in this case).</td>
+</tr>
+<tr>
+<td style="text-align: left;">swversion</td>
+<td style="text-align: left;">string 8, 8</td>
+<td style="text-align: left;">An identifier for the software version running on the light.</td>
+</tr>
+<tr>
+<td style="text-align: left;">pointsymbol</td>
+<td style="text-align: left;">object</td>
+<td style="text-align: left;">This parameter is reserved for future functionality. As from <code>1.11</code> point symbols are no longer returned.</td>
+</tr>
+</tbody>
+</table>
+<p>The state object contains the following fields</p>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">bool</td>
+<td style="text-align: left;">On/Off state of the light. On=true, Off=false</td>
+</tr>
+<tr>
+<td style="text-align: left;">bri</td>
+<td style="text-align: left;">uint8</td>
+<td style="text-align: left;">Brightness of the light. This is a scale from the minimum brightness the light is capable of, 1, to the maximum capable brightness, 254.</td>
+</tr>
+<tr>
+<td style="text-align: left;">hue</td>
+<td style="text-align: left;">uint16</td>
+<td style="text-align: left;">Hue of the light. This is a wrapping value between 0 and 65535. Both 0 and 65535 are red, 25500 is green and 46920 is blue.</td>
+</tr>
+<tr>
+<td style="text-align: left;">sat</td>
+<td style="text-align: left;">uint8</td>
+<td style="text-align: left;">Saturation of the light. 254 is the most saturated (colored) and 0 is the least saturated (white).</td>
+</tr>
+<tr>
+<td style="text-align: left;">xy</td>
+<td style="text-align: left;">list 2..2 of float 4</td>
+<td style="text-align: left;">The x and y coordinates of a color in <a href="/documentation/core-concepts#color_gets_more_complicated">CIE color space</a>.</p>
+<p>			The first entry is the x coordinate and the second entry is the y coordinate. Both x and y are between 0 and 1.</td>
+</tr>
+<tr>
+<td style="text-align: left;">ct</td>
+<td style="text-align: left;">uint16</td>
+<td style="text-align: left;"><a href="http://en.wikipedia.org/wiki/Mired">The Mired Color temperature</a> of the light. 2012 connected lights are capable of 153 (6500K) to 500 (2000K).</td>
+</tr>
+<tr>
+<td style="text-align: left;">alert</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;"><a href="/documentation/core-concepts#some_extra_fun_stuff">The alert effect</a>, which is a temporary change to the bulb&rsquo;s state. This can take one of the following values:<br />
+			<strong>&ldquo;none&rdquo;</strong> &ndash; The light is not performing an alert effect.<br />
+			<strong>&ldquo;select&rdquo;</strong> &ndash; The light is performing one <a href="glossary#breathCycle">breathe cycle</a>.<br />
+			<strong>&ldquo;lselect&rdquo;</strong> &ndash; The light is performing breathe cycles for 15 seconds or until an <code>&quot;alert&quot;: &quot;none&quot;</code> command is received.</p>
+<p>			Note that this contains the last alert sent to the light and not its current state. i.e. After the breathe cycle has finished the bridge does not reset the alert to &quot;<strong>none</strong>&quot;.</td>
+</tr>
+<tr>
+<td style="text-align: left;">effect</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">The dynamic effect of the light, can either be &ldquo;none&rdquo; or &ldquo;colorloop&rdquo;.</p>
+<p>			If set to colorloop, the light will cycle through all hues using the current brightness and saturation settings.</td>
+</tr>
+<tr>
+<td style="text-align: left;">colormode</td>
+<td style="text-align: left;">string 2, 2</td>
+<td style="text-align: left;">Indicates the color mode in which the light is working, this is the last command type it received. Values are &ldquo;hs&rdquo; for Hue and Saturation, &ldquo;xy&rdquo; for XY and &ldquo;ct&rdquo; for Color Temperature. This parameter is only present when the light supports at least one of the values.</td>
+</tr>
+<tr>
+<td style="text-align: left;">reachable</td>
+<td style="text-align: left;">bool</td>
+<td style="text-align: left;">Indicates if a light can be reached by the bridge.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="143_response_example">1.4.3. Response example</h3>
+<div class="highlight">
+<pre>
+<code class="json"><span class="p">{</span>
+	<span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="nt">&quot;hue&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+		<span class="nt">&quot;on&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="nt">&quot;effect&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;alert&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;bri&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+		<span class="nt">&quot;sat&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+		<span class="nt">&quot;ct&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+		<span class="nt">&quot;xy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+		<span class="nt">&quot;reachable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+		<span class="nt">&quot;colormode&quot;</span><span class="p">:</span> <span class="s2">&quot;hs&quot;</span>
+	<span class="p">},</span>
+	<span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Living Colors&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;LC 1&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;modelid&quot;</span><span class="p">:</span> <span class="s2">&quot;LC0015&quot;</span><span class="p">,</span>
+	<span class="nt">&quot;swversion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.3&quot;</span><span class="p">,</span> 	
+	<span class="nt">&quot;pointsymbol&quot;</span><span class="p">:</span> <span class="p">{</span>
+		<span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;2&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;3&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;4&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;5&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;6&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;7&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+		<span class="nt">&quot;8&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="144_notes">1.4.4. Notes</h3>
+<p>Note the usage of the colormode parameter: There are 3 ways of setting the light color: xy, color temperature (ct) or hue and saturation (hs). A light may contain different settings for xy, ct and hs, but only the mode indicated by the colormode parameter will be certain to give the active light color.</p>
+<p>Also note that some light state attributes are only present for specific light types. See <a href="/documentation/supported-lights"> supported lights</a> for more information or <a href="/documentation/supported-lights-json">supported Lights JSON</a> for JSON response examples.</p>
+<p><b>Note</b> As from <code>1.11</code> point symbols are no longer returned.</p>
+<h2 id="15_set_light_attributes_rename">1.5. Set light attributes (rename)</h2>
+<table>
+<thead>
+<tr>
+<th><strong>URL</strong></th>
+<th><code>/api/&lt;username&gt;/lights/&lt;id&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Method</td>
+<td style="text-align: left;"><code>PUT</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Permission</td>
+<td style="text-align: left;">Whitelist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="151_description">1.5.1. Description</h3>
+<p>Used to rename lights. A light can have its name changed when in any state, including when it is unreachable or off.</p>
+<h3 id="152_body_arguments">1.5.2. Body arguments</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Required</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string 0, 32</td>
+<td style="text-align: left;">The new name for the light. If the name is already taken a space and number will be appended by the bridge e.g. &ldquo;Bedroom Light 1&rdquo;.</td>
+<td style="text-align: left;">Required</td>
+</tr>
+</tbody>
+</table>
+<h3 id="153_body">1.5.3. Body</h3>
+<div class="highlight">
+<pre>
+<code class="json"><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Bedroom Light&quot;</span><span class="p">}</span>
+</code></pre></div>
+<h3 id="154_response">1.5.4. Response</h3>
+<p>A response to a successful <code>PUT</code> request contains confirmation of the arguments passed in. Note: If the new value is too large to return in the response due to internal memory constraints then a value of &ldquo;Updated.&rdquo; is returned.</p>
+<h3 id="155_response_example">1.5.5. Response example</h3>
+<div class="highlight">
+<pre>
+<code class="json"><span class="p">[{</span><span class="nt">&quot;success&quot;</span><span class="p">:{</span><span class="nt">&quot;/lights/1/name&quot;</span><span class="p">:</span><span class="s2">&quot;Bedroom Light&quot;</span><span class="p">}}]</span>
+</code></pre></div>
+<h2 id="16_set_light_state">1.6. Set light state</h2>
+<table>
+<thead>
+<tr>
+<th><strong>URL</strong></th>
+<th><code>/api/&lt;username&gt;/lights/&lt;id&gt;/state</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Method</td>
+<td style="text-align: left;"><code>PUT</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Version</td>
+<td style="text-align: left;">1.0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Permission</td>
+<td style="text-align: left;">Whitelist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="161_description">1.6.1. Description</h3>
+<p>Allows the user to turn the light on and off, modify the hue and effects. Please see the <a href="/faq-page">FAQ</a> for info on performance considerations.</p>
+<h3 id="162_body_arguments">1.6.2. Body arguments</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Description</strong></th>
+<th>&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">bool</td>
+<td style="text-align: left;">On/Off state of the light. On=true, Off=false</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">bri</td>
+<td style="text-align: left;">uint8</td>
+<td style="text-align: left;">The brightness value to set the light to.</p>
+<p>			Brightness is a scale from 1 (the minimum the light is capable of) to 254 (the maximum). <strong>Note</strong>: a brightness of 1 is not off.</p>
+<p>			e.g. &ldquo;brightness&rdquo;: 60 will set the light to a specific brightness</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">hue</td>
+<td style="text-align: left;">uint16</td>
+<td style="text-align: left;">The hue value to set light to.</p>
+<p>			The hue value is a wrapping value between 0 and 65535. Both 0 and 65535 are red, 25500 is green and 46920 is blue.</p>
+<p>			e.g. &ldquo;hue&rdquo;: 50000 will set the light to a specific hue.</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">sat</td>
+<td style="text-align: left;">uint8</td>
+<td style="text-align: left;">Saturation of the light. 254 is the most saturated (colored) and 0 is the least saturated (white).</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">xy</td>
+<td style="text-align: left;">list 2..2 of float 4</td>
+<td style="text-align: left;">The x and y coordinates of a color in <a href="/documentation/core-concepts#color_gets_more_complicated">CIE color space</a>.</p>
+<p>			The first entry is the x coordinate and the second entry is the y coordinate. Both x and y must be between 0 and 1.<br />
+			If the specified coordinates are not in the <a href="/documentation/core-concepts#color_gets_more_complicated">CIE color space</a>, the closest color to the coordinates will be chosen.</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">ct</td>
+<td style="text-align: left;">uint16</td>
+<td style="text-align: left;"><a href="http://en.wikipedia.org/wiki/Mired">The Mired Color temperature</a> of the light. 2012 connected lights are capable of 153 (6500K) to 500 (2000K).</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">alert</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">
+<p><a href="/documentation/core-concepts#some_extra_fun_stuff">The alert effect</a>, is a temporary change to the bulb&rsquo;s state, and has one of the following values:<br />
+			<strong>&ldquo;none&rdquo;</strong> &ndash; The light is not performing an alert effect.<br />
+			<strong>&ldquo;select&rdquo;</strong> &ndash; The light is performing one <a href="/documentation/glossary#breathCycle">breathe cycle</a>.<br />
+			<strong>&ldquo;lselect&rdquo;</strong> &ndash; The light is performing breathe cycles for 15 seconds or until an <code>&quot;alert&quot;: &quot;none&quot;</code> command is received.</p>
+<p>Note that this contains the last alert sent to the light and not its current state. i.e. After the breathe cycle has finished the bridge does not reset the alert to &quot;<strong>none</strong>&quot;.</p>
+</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">effect</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">The dynamic effect of the light. Currently &ldquo;none&rdquo; and &ldquo;colorloop&rdquo; are supported. Other values will generate an error of type 7.</p>
+<p>			Setting the effect to colorloop will cycle through all hues using the current brightness and saturation settings.</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">transitiontime</td>
+<td style="text-align: left;">uint16</td>
+<td style="text-align: left;">The duration of the transition from the light&rsquo;s current state to the new state. This is given as a multiple of 100ms and defaults to 4 (400ms). For example, setting <code>transitiontime:10</code> will make the transition last 1 second.</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">bri_inc</td>
+<td style="text-align: left;">-254 to 254</td>
+<td style="text-align: left;">As of <code>1.7</code>. Increments or decrements the value of the brightness.&nbsp; bri_inc is ignored if the bri attribute is provided. Any ongoing bri transition is stopped. Setting a value of 0 also stops any ongoing transition. The bridge will return the bri value after the increment is performed.</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">sat_inc</td>
+<td style="text-align: left;">-254 to 254</td>
+<td style="text-align: left;">As of <code>1.7</code>. Increments or decrements the value of the sat.&nbsp; sat_inc is ignored if the sat attribute is provided. Any ongoing sat transition is stopped. Setting a value of 0 also stops any ongoing transition. The bridge will return the sat value after the increment is performed.</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">hue_inc</td>
+<td style="text-align: left;">-65534 to 65534</td>
+<td style="text-align: left;">As of <code>1.7</code>. Increments or decrements the value of the hue.&nbsp;&nbsp; hue_inc is ignored if the hue attribute is provided. Any ongoing color transition is stopped. Setting a value of 0 also stops any ongoing transition. The bridge will return the hue value after the increment is performed.</p>
+<p>			Note if the resulting values are &lt; 0 or &gt; 65535 the result is wrapped. For example:</p>
+<pre>
+<span class="p">{</span><span class="nt">&quot;hue_inc&quot;</span><span class="p">:</span>  <span class="mi">1</span><span class="p">}</span></pre><p>			on a hue value of 65535 results in a hue of 0.</p>
+<pre>
+<span class="p">{</span><span class="nt">&quot;hue_inc&quot;</span><span class="p">:</span>  <span class="mi">-2</span><span class="p">}</span> </pre><p>			on a hue value of 0 results in a hue of 65534.</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">ct_inc</td>
+<td style="text-align: left;">-65534 to 65534</td>
+<td style="text-align: left;">As of <code>1.7</code>. Increments or decrements the value of the ct. ct_inc is ignored if the ct attribute is provided. Any ongoing color transition is stopped. Setting a value of 0 also stops any ongoing transition. The bridge will return the ct value after the increment is performed.</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+<tr>
+<td style="text-align: left;">xy_inc</td>
+<td style="text-align: left;">list 2..2 of float 4</td>
+<td style="text-align: left;">As of <code>1.7</code>. Increments or decrements the value of the xy.&nbsp; xy_inc is ignored if the xy attribute is provided. Any ongoing color transition is stopped. Setting a value of 0 also stops any ongoing transition. Will stop at it&#39;s gamut boundaries. The bridge will return the xy value after the increment is performed. Max value [0.5, 0.5].</td>
+<td style="text-align: left;">Optional</td>
+</tr>
+</tbody>
+</table>
+<h3 id="163_body_example">1.6.3. Body example</h3>
+<div class="highlight">
+<pre>
+<code class="json"><span class="p">{</span>
+	<span class="nt">&quot;hue&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+	<span class="nt">&quot;on&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+	<span class="nt">&quot;bri&quot;</span><span class="p">:</span> <span class="mi">200</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="164_response">1.6.4. Response</h3>
+<p>A response to a successful PUT request contains confirmation of the arguments passed in. Note: If the new value is too large to return in the response due to internal memory constraints then a value of &ldquo;Updated.&rdquo; is returned.</p>
+<h3 id="165_response_example">1.6.5. Response example</h3>
+<div class="highlight">
+<pre>
+<code class="json"><span class="p">[</span>
+	<span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:{</span><span class="nt">&quot;/lights/1/state/bri&quot;</span><span class="p">:</span><span class="mi">200</span><span class="p">}},</span>
+	<span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:{</span><span class="nt">&quot;/lights/1/state/on&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}},</span>
+	<span class="p">{</span><span class="nt">&quot;success&quot;</span><span class="p">:{</span><span class="nt">&quot;/lights/1/state/hue&quot;</span><span class="p">:</span><span class="mi">50000</span><span class="p">}}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h3 id="166_notes">1.6.6. Notes</h3>
+<p>A light cannot have its hue, saturation, brightness, effect, ct or xy modified when it is turned off. Doing so will return <a href="/documentation/error-messages#commandSpecificErrors"> 201 error</a>.</p>
+<p>There are 3 methods available to set the color of the light &ndash; hue and saturation (hs), xy or color temperature (ct). If multiple methods are used then a priority is used: xy &gt; ct &gt; hs. All included parameters will be updated but the &lsquo;colormode&rsquo; will be set using the priority system.</p>
+<h2 id="17_delete_lights">1.7. Delete lights</h2>
+<table>
+<thead>
+<tr>
+<th><strong>URL</strong></th>
+<th><code>/api/&lt;username&gt;/lights/&lt;id&gt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Method</td>
+<td style="text-align: left;"><code>DELETE</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Version</td>
+<td style="text-align: left;">1.7</td>
+</tr>
+<tr>
+<td style="text-align: left;">Permission</td>
+<td style="text-align: left;">Whitelist</td>
+</tr>
+</tbody>
+</table>
+<h3 id="171_description">1.7.1. Description</h3>
+<p>Deletes a light from the bridge. For information on the impact this may have on your app please check the <a href="http://www.developers.meethue.com/documentation/delete-devices-application-guidance">delete devices application guidance</a> page.</p>
+</div></div></div>  </div>
+
+  
+  
+</div>
+
+</section>
+  </div>
+   
+            
+                              
+
+         
+                    <section class="page-bottom">
+                      <div class="container">
+                                            </div>
+                    </section>   
+                
+                </div>  <!-- Main Container -->
+                
+    </div> <!-- End of main content -->
+  </div>  <!-- End of Menu/Content row -->
+
+  </div>  <!-- End of main Container div -->
+ </div>  <!-- End of Main -->
+</div>  <!-- End of Wrapper -->
+
+
+   <footer class="footer footer-fixed-bottom">
+    
+         
+   <div style="width: 100%;  height: 70px; background-color: #F5F5F5; color: white; padding-top: 20px;  border-top: 1px solid #E4E4E4;" align="center">
+     <div id="footerContent">
+        <span class="footerLink">Keep in touch&nbsp;&nbsp;</span>
+        <span>
+        
+        <a href="https://twitter.com/philipshuedev" target="_blank"><img src="/sites/all/themes/meethue/images/footer_blue_twitter.png" alt="Twitter Icon"/></a>
+        <a href="http://www.facebook.com/huePhilips" target="_blank"><img src="/sites/all/themes/meethue/images/footer_blue_facebook.png" alt="Facebook Icon"/></a>
+        <a href="mailto:philipshuedev@philips.com" target="_blank"><img src="/sites/all/themes/meethue/images/footer_blue_linkedin.png" alt="Email Icon"/></a>
+        
+        <!--
+        <a class="twitter_icon" href="https://twitter.com/philipshuedev" target="_blank"></a>&nbsp;
+        <a class="facebook_icon" href="http://www.facebook.com/huePhilips" target="_blank"></a>&nbsp;
+        <a class="linkedin_icon" href="mailto:philipshuedev@philips.com"></a>
+        -->
+        </span>
+        <span style="padding-left: 40px;"><a class="footerLink" href="/content/questions-contact-us">Contact</a></span>&nbsp;|&nbsp;       
+        <span><a class="footerLink" href="/documentation/conditions-use">Conditions of use</a></span>&nbsp;|&nbsp;
+        <span><a class="footerLink" href="/privacy-notice">Privacy &amp; cookies</a></span>&nbsp;|&nbsp;
+        <span><a class="footerLink" href="http://www.lighting.philips.com/main/company/about/product-security.html">Product Security</a></span>
+        <span class="footerLink" style="padding-left:40px;">&#169; 2014 - 2016 Koninklijke Philips Electronics N.V.</span>
+        
+     </div>
+   </div>
+     
+   </footer>
+
+ </div>  <!-- End of Footer Row -->
+
+ <script type="text/javascript">
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-38119518-2']);
+ _gaq.push(['_trackPageview']);
+
+ (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+</script>
+  <script src="https://www.developers.meethue.com/sites/default/files/js/js_L50O_PWoAuMOxVjnzZCkNSSmI0kFwhZsO1_KS8WnGKw.js"></script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"cfb00904a5","applicationID":"19663961","transactionName":"b11aNRBXVkZTUhENXVYXeQIWX1dbHV8KAFdnSFkGB2lOXFdG","queueTime":0,"applicationTime":853,"atts":"QxpZQ1hNRUg=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
