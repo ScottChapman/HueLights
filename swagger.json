@@ -59,7 +59,7 @@
             },
             "post": {
                 "summary": "Set light state",
-                "description": "See http://huelights.mybluemix.net/public/HueLightsAPI.htm",
+                "description": "See http://huelights.mybluemix.net/HueLightsAPI.htm",
                 "parameters": [
                     {
                         "in": "path",
