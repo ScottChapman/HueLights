@@ -11,6 +11,7 @@ var http = require('http');
 var bodyParser = require('body-parser');
 var mqtt = require('mqtt')
 var _ = require('lodash');
+var cors = require('cors');
 // var client  = mqtt.connect('mqtt:192.168.86.10')
 var client  = mqtt.connect('mqtt:scottchapman.no-ip.org')
 
@@ -42,6 +43,7 @@ var cfenv = require('cfenv');
 
 // create a new express server
 var app = express();
+app.use(cors());
 
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
