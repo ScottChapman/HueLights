@@ -9,6 +9,8 @@
 var express = require('express');
 var http = require('http');
 var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
+var textParser = bodyParser.text();
 var mqtt = require('mqtt')
 var _ = require('lodash');
 // var client  = mqtt.connect('mqtt:192.168.86.10')
@@ -58,7 +60,7 @@ app.use(function(req, res, next) {
 app.use(express.static(__dirname + '/public'));
 
 // body parser
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
@@ -129,7 +131,7 @@ function expand(state, callback) {
   callback(error,state);
 }
 
-app.post('/LightState/:lightname', function(req,res) {
+app.post('/LightState/:lightname', jsonParser, function(req,res) {
   var lightname = req.params.lightname;
   var body = req.body;
   GetLightByName(lightname, function(err, light) {
@@ -166,39 +168,33 @@ function toHSB(color) {
   }
 }
 
-app.post('/Color/:lightname', function(req,res) {
+app.post('/Color/:lightname', textParser, function(req,res) {
   var lightname = req.params.lightname;
   var body = req.body;
-  if (body.hasOwnProperty("color")) {
-    var color = OneColor(body.color);
-    if (color) {
-      GetLightByName(lightname, function(err, light) {
-        if (!err) {
-            var message = {
-              state: toHSB(color),
-              light: light,
-              key: hubKeys[light.hub.ipaddress],
-            };
-            client.publish('SetLightState',JSON.stringify(message));
-            res.status(200).send({status: "Light State Update Request sent"}).end();
-            console.log("Sending Message!");
-            console.dir(message);
-            found = true;
-          }
-          else {
-            console.log("NOT found!");
-            res.status(400).send({status: "Light not found"}).end();
-          }
-        })
-    }
-    else {
-      console.log("Color not found");
-      res.status(400).send({status: "color not found"}).end();
-    }
+  var color = OneColor(body);
+  if (color) {
+    GetLightByName(lightname, function(err, light) {
+      if (!err) {
+          var message = {
+            state: toHSB(color),
+            light: light,
+            key: hubKeys[light.hub.ipaddress],
+          };
+          client.publish('SetLightState',JSON.stringify(message));
+          res.status(200).send({status: "Light State Update Request sent"}).end();
+          console.log("Sending Message!");
+          console.dir(message);
+          found = true;
+        }
+        else {
+          console.log("NOT found!");
+          res.status(400).send({status: "Light not found"}).end();
+        }
+      })
   }
   else {
-    console.log("Color property not found");
-    res.status(400).send({status: "color property not found"}).end();
+    console.log("Color not found");
+    res.status(400).send({status: "color not found"}).end();
   }
 })
 

@@ -104,14 +104,14 @@
                         "in": "body",
                         "name": "body",
                         "description": "Color to set",
-                        "required": false,
+                        "required": true,
                         "schema": {
                             "$ref": "#/definitions/LightColor"
                         }
                     }
                 ],
                 "consumes": [
-                    "application/json"
+                    "text/plain"
                 ],
                 "responses": {
                     "200": {
@@ -123,15 +123,7 @@
     },
     "definitions": {
         "LightColor": {
-            "type": "object",
-            "required": [
-                "color"
-            ],
-            "properties": {
-                "color": {
-                    "type": "string"
-                }
-            }
+            "type": "string"
         },
         "LightStatus": {
             "type": "object",
