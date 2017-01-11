@@ -112,14 +112,21 @@ app.get('/LightState/:lightname', function(req,res) {
   })
 })
 
-function expand(state) {
-  if (state.hasOwnProperty("color") && colors.hasOwnProperty(state.color)) {
-    _.assign(state, colors[state.color]);
-    delete state.color;
+function expand(state, callback) {
+  var error = null;
+  if (state.hasOwnProperty("color")) {
+    var color = OneColor(state.color);
+    if (color) {
+      _.assign(state, toHSB(color));
+      delete state.color;
+    }
+    else {
+       error = "No such color: " + state.color
+    }
   }
   if (!state.hasOwnProperty("transitiontime"))
     state.transitiontime = 0;
-  return state;
+  callback(error,state);
 }
 
 app.post('/LightState/:lightname', function(req,res) {
@@ -127,16 +134,22 @@ app.post('/LightState/:lightname', function(req,res) {
   var body = req.body;
   GetLightByName(lightname, function(err, light) {
     if (!err) {
-        var message = {
-          state: expand(body),
-          light: light,
-          key: hubKeys[light.hub.ipaddress],
-        };
-        client.publish('SetLightState',JSON.stringify(message));
-        res.status(200).send({status: "Light State Update Request sent"}).end();
-        console.log("Sending Message!");
-        console.dir(message);
-        found = true;
+        expand(body, function(error, state) {
+          if (!error) {
+            var message = {
+              state: state,
+              light: light,
+              key: hubKeys[light.hub.ipaddress],
+            };
+            client.publish('SetLightState',JSON.stringify(message));
+            res.status(200).send({status: "Light State Update Request sent"}).end();
+            console.log("Sending Message!");
+            console.dir(message);
+          }
+          else {
+            res.status(400).send(error).end();
+          }
+        })
       }
       else {
         console.log("NOT found!");
@@ -144,6 +157,14 @@ app.post('/LightState/:lightname', function(req,res) {
       }
     })
 })
+
+function toHSB(color) {
+  return {
+    hue: Math.round(color.hue()*65535),
+    bri: Math.round(color.lightness() * 254),
+    sat: Math.round(color.saturation() * 254)
+  }
+}
 
 app.post('/Color/:lightname', function(req,res) {
   var lightname = req.params.lightname;
@@ -154,7 +175,7 @@ app.post('/Color/:lightname', function(req,res) {
       GetLightByName(lightname, function(err, light) {
         if (!err) {
             var message = {
-              state: expand(body),
+              state: toHSB(color),
               light: light,
               key: hubKeys[light.hub.ipaddress],
             };
