@@ -101,7 +101,7 @@ function GetLightByName(lightname, callback) {
   if (!found) callback(true, "No light found");
 }
 
-app.get('/State/:lightname', function(req,res) {
+app.get('/Light/:lightname', function(req,res) {
   var lightname = req.params.lightname;
   GetLightByName(lightname, function(err, light) {
     if (err) {
@@ -132,7 +132,7 @@ function expand(state, callback) {
   callback(error,state);
 }
 
-app.post('/State/:lightname', jsonParser, function(req,res) {
+app.post('/Light/:lightname', jsonParser, function(req,res) {
   var lightname = req.params.lightname;
   var body = req.body;
   GetLightByName(lightname, function(err, light) {
