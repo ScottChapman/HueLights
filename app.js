@@ -213,7 +213,8 @@ client.subscribe('HubConfig/+');
 
 client.on('message', function(topic, message) {
   var obj = JSON.parse(message);
-  delete obj.config.whitelist;
+  if (obj.hasOwnProperty('whitelist'))
+  	delete obj.config.whitelist;
   hubs[obj.config.name] = obj;
   console.dir(obj);
 })
