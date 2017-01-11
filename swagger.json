@@ -87,9 +87,52 @@
                     }
                 }
             }
+        },
+        "/Color/{LightName}": {
+            "post": {
+                "summary": "Set light color by name",
+                "description": "See named colors here: https://github.com/One-com/one-color/blob/master/lib/plugins/namedColors.js",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "LightName",
+                        "description": "The name of the light",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Color to set",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/LightColor"
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "LightColor": {
+            "type": "object",
+            "required": [
+                "color"
+            ],
+            "properties": {
+                "color": {
+                    "type": "string"
+                }
+            }
+        },
         "LightStatus": {
             "type": "object",
             "required": [
