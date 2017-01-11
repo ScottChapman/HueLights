@@ -168,9 +168,41 @@ function toHSB(color) {
   }
 }
 
+/*
 app.post('/Color/:lightname', textParser, function(req,res) {
   var lightname = req.params.lightname;
   var body = req.body;
+  var color = OneColor(body);
+  if (color) {
+    GetLightByName(lightname, function(err, light) {
+      if (!err) {
+          var message = {
+            state: toHSB(color),
+            light: light,
+            key: hubKeys[light.hub.ipaddress],
+          };
+          client.publish('SetLightState',JSON.stringify(message));
+          res.status(200).send({status: "Light State Update Request sent"}).end();
+          console.log("Sending Message!");
+          console.dir(message);
+          found = true;
+        }
+        else {
+          console.log("NOT found!");
+          res.status(400).send({status: "Light not found"}).end();
+        }
+      })
+  }
+  else {
+    console.log("Color not found");
+    res.status(400).send({status: "color not found"}).end();
+  }
+})
+*/
+
+app.post('/Color/:lightname/:color', textParser, function(req,res) {
+  var lightname = req.params.lightname;
+  var body = req.params.color;
   var color = OneColor(body);
   if (color) {
     GetLightByName(lightname, function(err, light) {
