@@ -13,7 +13,7 @@
         "http"
     ],
     "paths": {
-        "/HubNames": {
+        "/Hubs": {
             "get": {
                 "responses": {
                     "200": {
@@ -22,7 +22,7 @@
                 }
             }
         },
-        "/HubConfig/{HubName}": {
+        "/Hub/{HubName}": {
             "get": {
                 "parameters": [
                     {
@@ -40,7 +40,7 @@
                 }
             }
         },
-        "/LightState/{LightName}": {
+        "/Light/{LightName}": {
             "get": {
                 "parameters": [
                     {
@@ -90,7 +90,7 @@
         },
         "/Color/{LightName}/{Color}": {
             "post": {
-                "summary": "Set light color by name",
+               "summary": "Set light color by name",
                 "description": "See named colors here: https://github.com/One-com/one-color/blob/master/lib/plugins/namedColors.js",
                 "parameters": [
                     {
@@ -106,11 +106,33 @@
                         "description": "Color to set",
                         "required": true,
                         "type": "string"
-                        }
                     }
                 ],
-                "consumes": [
-                    "text/plain"
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/Power/{LightName}/{Power}": {
+            "post": {
+                "summary": "Turn light on/off",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "LightName",
+                        "description": "The name of the light",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "Power",
+                        "description": "on/off, true/false, etc...",
+                        "required": true,
+                        "type": "string"
+                    }
                 ],
                 "responses": {
                     "200": {

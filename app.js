@@ -18,6 +18,7 @@ var client  = mqtt.connect('mqtt:scottchapman.no-ip.org')
 var swaggerUI = require('swagger-ui-express');
 var swaggerDoc = require('./swagger.json');
 var OneColor = require('onecolor');
+var boolifyString = require('boolify-string');
 
 // colors
 // bri	uint8	The brightness value to set the light to.
@@ -65,7 +66,7 @@ app.use(express.static(__dirname + '/public'));
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
-app.get('/HubConfig/:hubname', function(req,res) {
+app.get('/Hub/:hubname', function(req,res) {
   var hubname = req.params.hubname;
   if (hubs.hasOwnProperty(hubname)) {
     res.status(200).send(hubs[hubname]).end();
@@ -75,7 +76,7 @@ app.get('/HubConfig/:hubname', function(req,res) {
   }
 })
 
-app.get('/HubNames', function(req,res) {
+app.get('/Hubs', function(req,res) {
   res.status(200).send(_.keys(hubs)).end();
 })
 
@@ -100,7 +101,7 @@ function GetLightByName(lightname, callback) {
   if (!found) callback(true, "No light found");
 }
 
-app.get('/LightState/:lightname', function(req,res) {
+app.get('/State/:lightname', function(req,res) {
   var lightname = req.params.lightname;
   GetLightByName(lightname, function(err, light) {
     if (err) {
@@ -131,7 +132,7 @@ function expand(state, callback) {
   callback(error,state);
 }
 
-app.post('/LightState/:lightname', jsonParser, function(req,res) {
+app.post('/State/:lightname', jsonParser, function(req,res) {
   var lightname = req.params.lightname;
   var body = req.body;
   GetLightByName(lightname, function(err, light) {
@@ -152,6 +153,28 @@ app.post('/LightState/:lightname', jsonParser, function(req,res) {
             res.status(400).send(error).end();
           }
         })
+      }
+      else {
+        console.log("NOT found!");
+        res.status(400).send({status: "Light not found"}).end();
+      }
+    })
+})
+
+app.post('/Power/:lightname/:state', function(req,res) {
+  var lightname = req.params.lightname;
+  var state = req.params.state;
+  GetLightByName(lightname, function(err, light) {
+    if (!err) {
+        var message = {
+          state: {"on": boolifyString(state)},
+          light: light,
+          key: hubKeys[light.hub.ipaddress],
+        };
+        client.publish('SetLightState',JSON.stringify(message));
+        res.status(200).send({status: "Light State Update Request sent"}).end();
+        console.log("Sending Message!");
+        console.dir(message);
       }
       else {
         console.log("NOT found!");
