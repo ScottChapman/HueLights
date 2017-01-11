@@ -15,6 +15,7 @@ var _ = require('lodash');
 var client  = mqtt.connect('mqtt:scottchapman.no-ip.org')
 var swaggerUI = require('swagger-ui-express');
 var swaggerDoc = require('./swagger.json');
+var OneColor = require('onecolor');
 
 // colors
 // bri	uint8	The brightness value to set the light to.
@@ -144,6 +145,43 @@ app.post('/LightState/:lightname', function(req,res) {
     })
 })
 
+app.post('/Color/:lightname', function(req,res) {
+  var lightname = req.params.lightname;
+  var body = req.body;
+  if (body.hasOwnProperty("color")) {
+    var color = OneColor(body.color);
+    if (color) {
+      GetLightByName(lightname, function(err, light) {
+        if (!err) {
+            var message = {
+              state: expand(body),
+              light: light,
+              key: hubKeys[light.hub.ipaddress],
+            };
+            client.publish('SetLightState',JSON.stringify(message));
+            res.status(200).send({status: "Light State Update Request sent"}).end();
+            console.log("Sending Message!");
+            console.dir(message);
+            found = true;
+          }
+          else {
+            console.log("NOT found!");
+            res.status(400).send({status: "Light not found"}).end();
+          }
+        })
+    }
+    else {
+      console.log("Color not found");
+      res.status(400).send({status: "color not found"}).end();
+    }
+  }
+  else {
+    console.log("Color property not found");
+    res.status(400).send({status: "color property not found"}).end();
+  }
+})
+
+/*
 app.post('/SetColor', function (req,res) {
   var body = req.body;
   var required = ['color','light'];
@@ -167,6 +205,7 @@ app.post('/SetColor', function (req,res) {
     res.status(400).send({status: "missing required fields (color, light)"}).end();
   }
 })
+*/
 
 var hubs = {};
 
