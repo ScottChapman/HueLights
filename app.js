@@ -167,15 +167,24 @@ app.post('/Power/:lightname/:state', function(req,res) {
   var state = req.params.state;
   GetLightByName(lightname, function(err, light) {
     if (!err) {
-        var message = {
-          state: {"on": boolifyString(state)},
-          light: light,
-          key: hubKeys[light.hub.ipaddress],
-        };
-        client.publish('SetLightState',JSON.stringify(message));
-        res.status(200).send({status: "Light State Update Request sent"}).end();
-        console.log("Sending Message!");
-        console.dir(message);
+        var body = {"on": boolifyString(state)};
+        expand(body, function(error, state) {
+          if (!error) {
+            var message = {
+              state: state,
+              light: light,
+              key: hubKeys[light.hub.ipaddress],
+            };
+            client.publish('SetLightState',JSON.stringify(message));
+            res.status(200).send({status: "Light State Update Request sent"}).end();
+            console.log("Sending Message!");
+            console.dir(message);
+          }
+          else {
+            console.log("Error: " + error);
+            res.status(400).send(error);
+          }
+        })
       }
       else {
         console.log("NOT found!");
@@ -226,32 +235,33 @@ app.post('/Color/:lightname', textParser, function(req,res) {
 
 app.post('/Color/:lightname/:color', textParser, function(req,res) {
   var lightname = req.params.lightname;
-  var body = req.params.color;
-  var color = OneColor(body);
-  if (color) {
-    GetLightByName(lightname, function(err, light) {
-      if (!err) {
-          var message = {
-            state: toHSB(color),
-            light: light,
-            key: hubKeys[light.hub.ipaddress],
-          };
-          client.publish('SetLightState',JSON.stringify(message));
-          res.status(200).send({status: "Light State Update Request sent"}).end();
-          console.log("Sending Message!");
-          console.dir(message);
-          found = true;
-        }
-        else {
-          console.log("NOT found!");
-          res.status(400).send({status: "Light not found"}).end();
-        }
-      })
-  }
-  else {
-    console.log("Color not found");
-    res.status(400).send({status: "color not found"}).end();
-  }
+  var body = {color: req.params.color};
+  GetLightByName(lightname, function(err, light) {
+    if (!err) {
+      expand(body, function(error, state) {
+        if (!error) {
+            var message = {
+              state: state,
+              light: light,
+              key: hubKeys[light.hub.ipaddress],
+            };
+            client.publish('SetLightState',JSON.stringify(message));
+            res.status(200).send({status: "Light State Update Request sent"}).end();
+            console.log("Sending Message!");
+            console.dir(message);
+            found = true;
+          }
+          else {
+            console.log("error: " + error);
+            res.status(400).send(error).end();
+          }
+        })
+      }
+      else {
+        console.log("NOT found!");
+        res.status(400).send({status: "Light not found"}).end();
+      }
+    })
 })
 
 /*
