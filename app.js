@@ -144,6 +144,10 @@ var statusColors = {
 
 var statusLightList = [
   "Scott Bloom",
+  "Jim Bloom",
+  "Bruce Bloom",
+  "David Bloom",
+  "Miguel Bloom",
   "Vijay Bloom"
 ];
 
