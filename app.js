@@ -133,10 +133,10 @@ function expand(state, callback) {
   callback(error,state);
 }
 
-app.post('/PipelineGreen', jsonParser, function(req,res) {
+app.post('/PipelineStatus', jsonParser, function(req,res) {
   var body = req.body;
-  if (body.hasOwnProperty("status")) {
-    integrationPipelineGreen = boolifyString(body.status);
+  if (body.hasOwnProperty("Status")) {
+    integrationPipelineStatus = body.status;
     res.status(200).send({status: "Accepted"}).end();
   }
   else {
@@ -144,8 +144,8 @@ app.post('/PipelineGreen', jsonParser, function(req,res) {
   }
 })
 
-app.get('/PipelineGreen', jsonParser, function(req,res) {
-  res.status(200).send({status: integrationPipelineGreen}).end();
+app.get('/PipelineStatus', jsonParser, function(req,res) {
+  res.status(200).send({Status: integrationPipelineStatus}).end();
 })
 
 app.post('/Light/:lightname', jsonParser, function(req,res) {
@@ -305,7 +305,7 @@ app.post('/SetColor', function (req,res) {
 })
 */
 
-var integrationPipelineGreen = false;
+var integrationPipelineStatus = "Down";
 
 var hubs = {};
 
