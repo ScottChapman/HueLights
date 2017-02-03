@@ -133,10 +133,48 @@ function expand(state, callback) {
   callback(error,state);
 }
 
+var statusColors = {
+  "green": "green",
+  "red": "red",
+  "good": "green",
+  "bad": "red",
+  "up": "green",
+  "down": "red",
+}
+
+var statusLightList = [
+  "Scott Bloom",
+  "Vijay Bloom"
+];
+
+function setPipelineStatusLights(status) {
+  status = status.toLowerCase();
+  if (statusColors.hasOwnProperty(status)) {
+    var body = {color: statusColors[status]};
+    statusLightList.forEach(function(lightname) {
+      GetLightByName(lightname, function(err, light) {
+        if (!err) {
+          expand(body, function(error, state) {
+            if (!error) {
+                var message = {
+                  state: state,
+                  light: light,
+                  key: hubKeys[light.hub.ipaddress],
+                };
+                client.publish('SetLightState',JSON.stringify(message));
+              }
+            })
+          }
+        })
+      })
+    }
+}
+
 app.post('/PipelineStatus', jsonParser, function(req,res) {
   var body = req.body;
   if (body.hasOwnProperty("Status")) {
     integrationPipelineStatus = body.Status;
+    setPipelineStatusLights(integrationPipelineStatus);
     res.status(200).send({status: "Accepted"}).end();
   }
   else {
