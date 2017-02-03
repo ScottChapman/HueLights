@@ -316,7 +316,7 @@ client.on('message', function(topic, message) {
   if (obj.hasOwnProperty('config') && obj.config.hasOwnProperty('whitelist'))
   	delete obj.config.whitelist;
   hubs[obj.config.name] = obj;
-  console.dir(obj);
+  // console.dir(obj);
 })
 // start server on the specified port and binding host
 var httpServer = http.createServer(app).listen(appEnv.port, '0.0.0.0', function() {
