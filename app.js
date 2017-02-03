@@ -133,6 +133,21 @@ function expand(state, callback) {
   callback(error,state);
 }
 
+app.post('/PipelineStatus', jsonParser, function(req,res) {
+  var body = req.body;
+  if (body.hasOwnProperty("status")); {
+    integrationPipelineGreen = body.status;
+    res.status(200).send({status: "Accepted"}).end();
+  }
+  else {
+    res.status(400).send({status: "Bad Request"}).end();
+  }
+}
+
+app.get('/PipelineStatus', jsonParser, function(req,res) {
+  res.status(200).send({status: integrationPipelineGreen}).end();
+}
+
 app.post('/Light/:lightname', jsonParser, function(req,res) {
   var lightname = req.params.lightname;
   var body = req.body;
@@ -289,6 +304,8 @@ app.post('/SetColor', function (req,res) {
   }
 })
 */
+
+var integrationPipelineGreen = false;
 
 var hubs = {};
 
