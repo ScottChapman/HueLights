@@ -136,7 +136,7 @@ function expand(state, callback) {
 app.post('/PipelineStatus', jsonParser, function(req,res) {
   var body = req.body;
   if (body.hasOwnProperty("Status")) {
-    integrationPipelineStatus = body.status;
+    integrationPipelineStatus = body.Status;
     res.status(200).send({status: "Accepted"}).end();
   }
   else {
