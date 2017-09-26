@@ -134,12 +134,12 @@ function expand(state, callback) {
 }
 
 var statusColors = {
-  "green": "green",
-  "red": "red",
-  "good": "green",
-  "bad": "red",
-  "up": "green",
-  "down": "red",
+  "green": "blue",
+  "red": "blue",
+  "good": "blue",
+  "bad": "blue",
+  "up": "blue",
+  "down": "blue",
 }
 
 var statusLightList = [
@@ -165,6 +165,7 @@ function setPipelineStatusLights(status) {
                   light: light,
                   key: hubKeys[light.hub.ipaddress],
                 };
+                console.dir(message);
                 client.publish('SetLightState',JSON.stringify(message));
               }
             })
