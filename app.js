@@ -40,7 +40,7 @@ var colors = {
 var hubKeys = {
   "9.32.241.244": "N6ZMYDGSMy4dyJi2M8xB4JJ6uP49bwM77TLa149S",
   "9.32.235.253": "N6ZMYDGSMy4dyJi2M8xB4JJ6uP49bwM77TLa149S",
-  "9.53.24.184": "XurcL3CkWz6xhAPswke9X8dq10oTAUysogbee8ra"
+  "9.53.24.197": "XurcL3CkWz6xhAPswke9X8dq10oTAUysogbee8ra"
 };
 
 // cfenv provides access to your Cloud Foundry environment
