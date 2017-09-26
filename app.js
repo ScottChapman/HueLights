@@ -128,6 +128,8 @@ function expand(state, callback) {
        error = "No such color: " + state.color
     }
   }
+  if (!state.hasOwnProperty("On"))
+    state.on = true;
   if (!state.hasOwnProperty("transitiontime"))
     state.transitiontime = 0;
   callback(error,state);
