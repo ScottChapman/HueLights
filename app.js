@@ -354,11 +354,16 @@ var hubs = {};
 client.subscribe('HubConfig/+');
 
 client.on('message', function(topic, message) {
-  var obj = JSON.parse(message);
-  if (obj.hasOwnProperty('config') && obj.config.hasOwnProperty('whitelist'))
-  	delete obj.config.whitelist;
-  hubs[obj.config.name] = obj;
-  console.log("Got config for: " + obj.config.name);
+  try {
+    var obj = JSON.parse(message);
+    if (obj.hasOwnProperty('config') && obj.config.hasOwnProperty('whitelist'))
+    	delete obj.config.whitelist;
+    hubs[obj.config.name] = obj;
+    console.log("Got config for: " + obj.config.name);
+  }
+  catch (err) {
+    console.log("ERROR: " + err);
+  }
   // console.dir(obj);
 })
 // start server on the specified port and binding host
