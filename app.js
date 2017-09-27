@@ -136,12 +136,12 @@ function expand(state, callback) {
 }
 
 var statusColors = {
-  "green": "blue",
-  "red": "blue",
-  "good": "blue",
-  "bad": "blue",
-  "up": "blue",
-  "down": "blue",
+  "green": "green",
+  "red": "red",
+  "good": "green",
+  "bad": "red",
+  "up": "green",
+  "down": "red",
 }
 
 var statusLightList = [
