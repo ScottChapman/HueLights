@@ -10,7 +10,7 @@
     },
     "host": "HueLights.mybluemix.net",
     "schemes": [
-        "http"
+        "http","https"
     ],
     "paths": {
         "/Hubs": {
