@@ -1,0 +1,792 @@
+[
+  {
+    "id": "5e2fba06.2747a4",
+    "type": "tab",
+    "label": "Hue Lights"
+  },
+  {
+    "id": "8f76cecd.81571",
+    "type": "tab",
+    "label": "Scan Hubs"
+  },
+  {
+    "id": "fe0d15ae.e51418",
+    "type": "tab",
+    "label": "Set Light State"
+  },
+  {
+    "id": "9d2506c8.a2f338",
+    "type": "tab",
+    "label": "Flow 1"
+  },
+  {
+    "id": "141d838f.d2050c",
+    "type": "hue-bridge",
+    "z": "",
+    "name": "LittletonHub",
+    "bridge": "9.32.241.244",
+    "key": "N6ZMYDGSMy4dyJi2M8xB4JJ6uP49bwM77TLa149S"
+  },
+  {
+    "id": "870b9116.4f911",
+    "type": "mqtt-broker",
+    "z": "",
+    "broker": "scottchapman.no-ip.org",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": ""
+  },
+  {
+    "id": "202852b.e5faeae",
+    "type": "ui_tab",
+    "z": "",
+    "name": "Build Pipeline",
+    "icon": "dashboard"
+  },
+  {
+    "id": "db4e95a7.cebdb8",
+    "type": "ui_group",
+    "z": "",
+    "name": "Pipeline Status",
+    "tab": "202852b.e5faeae",
+    "disp": true,
+    "width": "6"
+  },
+  {
+    "id": "b3908305.68b81",
+    "type": "ui_tab",
+    "z": "",
+    "name": "Bubbles",
+    "icon": "dashboard"
+  },
+  {
+    "id": "45675e53.0344e",
+    "type": "ui_base",
+    "theme": {
+      "name": "theme-light",
+      "lightTheme": {
+        "default": "#0094CE",
+        "baseColor": "#0094CE",
+        "baseFont": "Helvetica Neue",
+        "edited": false,
+        "reset": false
+      },
+      "darkTheme": {
+        "default": "#097479",
+        "baseColor": "#097479",
+        "baseFont": "Helvetica Neue",
+        "edited": false
+      },
+      "customTheme": {
+        "name": "Untitled Theme 1",
+        "default": "#4B7930",
+        "baseColor": "#4B7930",
+        "baseFont": "Helvetica Neue"
+      },
+      "themeState": {
+        "base-color": {
+          "default": "#0094CE",
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-titlebar-backgroundColor": {
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-backgroundColor": {
+          "value": "#fafafa",
+          "edited": false
+        },
+        "page-sidebar-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-textColor": {
+          "value": "#1bbfff",
+          "edited": false
+        },
+        "group-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "widget-textColor": {
+          "value": "#111111",
+          "edited": false
+        },
+        "widget-backgroundColor": {
+          "value": "#0094ce",
+          "edited": false
+        },
+        "widget-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        }
+      }
+    },
+    "site": {
+      "name": "Node-RED Dashboard",
+      "hideToolbar": "false",
+      "allowSwipe": "false",
+      "dateFormat": "DD/MM/YYYY",
+      "sizes": {
+        "sx": 48,
+        "sy": 48,
+        "gx": 6,
+        "gy": 6,
+        "cx": 6,
+        "cy": 6,
+        "px": 0,
+        "py": 0
+      }
+    }
+  },
+  {
+    "id": "80d5a71d.614778",
+    "type": "debug",
+    "z": "5e2fba06.2747a4",
+    "name": "",
+    "active": false,
+    "console": "false",
+    "complete": "true",
+    "x": 865,
+    "y": 129,
+    "wires": [
+      
+    ]
+  },
+  {
+    "id": "7d400c0a.3e9d84",
+    "type": "mqtt in",
+    "z": "5e2fba06.2747a4",
+    "name": "Lights",
+    "topic": "lights",
+    "qos": "0",
+    "broker": "870b9116.4f911",
+    "x": 109,
+    "y": 237,
+    "wires": [
+      [
+        "a199b5a3.a238b8"
+      ]
+    ]
+  },
+  {
+    "id": "a199b5a3.a238b8",
+    "type": "json",
+    "z": "5e2fba06.2747a4",
+    "name": "",
+    "x": 287.5,
+    "y": 238,
+    "wires": [
+      [
+        "90f24223.5d3d7",
+        "80d5a71d.614778"
+      ]
+    ]
+  },
+  {
+    "id": "4355fee9.930f3",
+    "type": "hue-set",
+    "z": "5e2fba06.2747a4",
+    "bridge": "141d838f.d2050c",
+    "light": "2",
+    "name": "Scott Bloom",
+    "x": 665.5,
+    "y": 240,
+    "wires": [
+      [
+        "80d5a71d.614778"
+      ]
+    ]
+  },
+  {
+    "id": "90f24223.5d3d7",
+    "type": "switch",
+    "z": "5e2fba06.2747a4",
+    "name": "",
+    "property": "payload.light",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "ScottBloom",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "DavidBloom",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "JimBloom",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "MiguelBloom",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "VijayBloom",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "BruceBloom",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "outputs": 6,
+    "x": 429.5,
+    "y": 240,
+    "wires": [
+      [
+        "4355fee9.930f3"
+      ],
+      [
+        "9240df70.55b15"
+      ],
+      [
+        "aedc96d5.d01328"
+      ],
+      [
+        "f3ec438b.42347"
+      ],
+      [
+        "edfcae61.a7c78"
+      ],
+      [
+        "bbfefa82.9fa988"
+      ]
+    ]
+  },
+  {
+    "id": "9240df70.55b15",
+    "type": "hue-set",
+    "z": "5e2fba06.2747a4",
+    "bridge": "141d838f.d2050c",
+    "light": "1",
+    "name": "David Bloom",
+    "x": 665,
+    "y": 280,
+    "wires": [
+      [
+        "80d5a71d.614778"
+      ]
+    ]
+  },
+  {
+    "id": "aedc96d5.d01328",
+    "type": "hue-set",
+    "z": "5e2fba06.2747a4",
+    "bridge": "141d838f.d2050c",
+    "light": "3",
+    "name": "Jim Bloom",
+    "x": 665,
+    "y": 320,
+    "wires": [
+      [
+        "80d5a71d.614778"
+      ]
+    ]
+  },
+  {
+    "id": "f3ec438b.42347",
+    "type": "hue-set",
+    "z": "5e2fba06.2747a4",
+    "bridge": "141d838f.d2050c",
+    "light": "4",
+    "name": "Miguel Bloom",
+    "x": 676,
+    "y": 368,
+    "wires": [
+      [
+        "80d5a71d.614778"
+      ]
+    ]
+  },
+  {
+    "id": "edfcae61.a7c78",
+    "type": "hue-set",
+    "z": "5e2fba06.2747a4",
+    "bridge": "141d838f.d2050c",
+    "light": "5",
+    "name": "Vijay Bloom",
+    "x": 666,
+    "y": 422,
+    "wires": [
+      [
+        "80d5a71d.614778"
+      ]
+    ]
+  },
+  {
+    "id": "bbfefa82.9fa988",
+    "type": "hue-set",
+    "z": "5e2fba06.2747a4",
+    "bridge": "141d838f.d2050c",
+    "light": "6",
+    "name": "Bruce Bloom",
+    "x": 666,
+    "y": 466,
+    "wires": [
+      [
+        "80d5a71d.614778"
+      ]
+    ]
+  },
+  {
+    "id": "3696acd3.5aab04",
+    "type": "http request",
+    "z": "8f76cecd.81571",
+    "name": "LittletonHub",
+    "method": "GET",
+    "ret": "txt",
+    "url": "http://9.32.241.244/api/N6ZMYDGSMy4dyJi2M8xB4JJ6uP49bwM77TLa149S/",
+    "tls": "",
+    "x": 526,
+    "y": 202,
+    "wires": [
+      [
+        "13ab6457.1091ac",
+        "b234a120.57d9d"
+      ]
+    ]
+  },
+  {
+    "id": "8729044c.488a28",
+    "type": "inject",
+    "z": "8f76cecd.81571",
+    "name": "",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "60",
+    "crontab": "",
+    "once": false,
+    "x": 345,
+    "y": 140,
+    "wires": [
+      [
+        "3696acd3.5aab04"
+      ]
+    ]
+  },
+  {
+    "id": "13ab6457.1091ac",
+    "type": "mqtt out",
+    "z": "8f76cecd.81571",
+    "name": "",
+    "topic": "HubConfig/Littleton",
+    "qos": "0",
+    "retain": "true",
+    "broker": "870b9116.4f911",
+    "x": 744,
+    "y": 247,
+    "wires": [
+      
+    ]
+  },
+  {
+    "id": "481645f5.e63e1c",
+    "type": "http request",
+    "z": "8f76cecd.81571",
+    "name": "AustinHub",
+    "method": "GET",
+    "ret": "txt",
+    "url": "http://9.53.24.197/api/XurcL3CkWz6xhAPswke9X8dq10oTAUysogbee8ra",
+    "tls": "",
+    "x": 521,
+    "y": 298,
+    "wires": [
+      [
+        "b20dd82a.dedd08"
+      ]
+    ]
+  },
+  {
+    "id": "5149f62.9784c08",
+    "type": "inject",
+    "z": "8f76cecd.81571",
+    "name": "",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "60",
+    "crontab": "",
+    "once": false,
+    "x": 334,
+    "y": 355,
+    "wires": [
+      [
+        "481645f5.e63e1c"
+      ]
+    ]
+  },
+  {
+    "id": "b20dd82a.dedd08",
+    "type": "mqtt out",
+    "z": "8f76cecd.81571",
+    "name": "",
+    "topic": "HubConfig/Austin",
+    "qos": "0",
+    "retain": "true",
+    "broker": "870b9116.4f911",
+    "x": 736,
+    "y": 314,
+    "wires": [
+      
+    ]
+  },
+  {
+    "id": "42382247.cba13c",
+    "type": "mqtt in",
+    "z": "fe0d15ae.e51418",
+    "name": "Set Light State",
+    "topic": "SetLightState",
+    "qos": "0",
+    "broker": "870b9116.4f911",
+    "x": 98,
+    "y": 125,
+    "wires": [
+      [
+        "8ac99049.fbb4"
+      ]
+    ]
+  },
+  {
+    "id": "fc53ef72.f4dba",
+    "type": "debug",
+    "z": "fe0d15ae.e51418",
+    "name": "",
+    "active": false,
+    "console": "false",
+    "complete": "true",
+    "x": 732,
+    "y": 127,
+    "wires": [
+      
+    ]
+  },
+  {
+    "id": "12042b52.7fd345",
+    "type": "http request",
+    "z": "fe0d15ae.e51418",
+    "name": "",
+    "method": "use",
+    "ret": "txt",
+    "url": "",
+    "tls": "",
+    "x": 668,
+    "y": 248,
+    "wires": [
+      [
+        "79e4cc47.f69dd4"
+      ]
+    ]
+  },
+  {
+    "id": "4391235b.580b8c",
+    "type": "function",
+    "z": "fe0d15ae.e51418",
+    "name": "Generate Request",
+    "func": "var obj = {};\nobj.method = \"PUT\";\nvar light = msg.payload.light;\nvar key = msg.payload.key;\nvar hub = light.hub;\nvar state = msg.payload.state;\nobj.url = \"http://\" + hub.ipaddress + \"/api/\" + key + \"/lights/\" + light.number + \"/state\";\nobj.payload = state;\nreturn obj;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 449,
+    "y": 198,
+    "wires": [
+      [
+        "12042b52.7fd345",
+        "fc53ef72.f4dba"
+      ]
+    ]
+  },
+  {
+    "id": "8ac99049.fbb4",
+    "type": "json",
+    "z": "fe0d15ae.e51418",
+    "name": "",
+    "x": 270,
+    "y": 126,
+    "wires": [
+      [
+        "4391235b.580b8c"
+      ]
+    ]
+  },
+  {
+    "id": "7dbdf6b6.d2b288",
+    "type": "link out",
+    "z": "fe0d15ae.e51418",
+    "name": "Trigger new state",
+    "links": [
+      "b5d37e56.cd6fa"
+    ],
+    "x": 822,
+    "y": 292,
+    "wires": [
+      
+    ]
+  },
+  {
+    "id": "b5d37e56.cd6fa",
+    "type": "link in",
+    "z": "8f76cecd.81571",
+    "name": "Trigger new state",
+    "links": [
+      "7dbdf6b6.d2b288"
+    ],
+    "x": 382,
+    "y": 246,
+    "wires": [
+      [
+        "3696acd3.5aab04",
+        "481645f5.e63e1c"
+      ]
+    ]
+  },
+  {
+    "id": "79e4cc47.f69dd4",
+    "type": "function",
+    "z": "fe0d15ae.e51418",
+    "name": "Null Object",
+    "func": "\nreturn {};",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 746.5,
+    "y": 353,
+    "wires": [
+      [
+        "7dbdf6b6.d2b288"
+      ]
+    ]
+  },
+  {
+    "id": "bfd33cc2.22c3e",
+    "type": "mqtt in",
+    "z": "9d2506c8.a2f338",
+    "name": "Set Light State",
+    "topic": "SetLightState",
+    "qos": "0",
+    "broker": "870b9116.4f911",
+    "x": 404,
+    "y": 86,
+    "wires": [
+      [
+        "e415de72.d52f4"
+      ]
+    ]
+  },
+  {
+    "id": "aa91b9fc.936a38",
+    "type": "debug",
+    "z": "9d2506c8.a2f338",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 1005.5,
+    "y": 269,
+    "wires": [
+      
+    ]
+  },
+  {
+    "id": "e415de72.d52f4",
+    "type": "json",
+    "z": "9d2506c8.a2f338",
+    "name": "",
+    "x": 536,
+    "y": 142,
+    "wires": [
+      [
+        "e86c0497.a78df8"
+      ]
+    ]
+  },
+  {
+    "id": "e86c0497.a78df8",
+    "type": "function",
+    "z": "9d2506c8.a2f338",
+    "name": "",
+    "func": "if (msg.payload.light.name === 'Scott bloom') {\n    return msg;\n}\nelse {\n    return null;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 704.5,
+    "y": 247,
+    "wires": [
+      [
+        "27c511fc.dea9ee"
+      ]
+    ]
+  },
+  {
+    "id": "27c511fc.dea9ee",
+    "type": "switch",
+    "z": "9d2506c8.a2f338",
+    "name": "",
+    "property": "payload.state.hue",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "21845",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "0",
+        "vt": "str"
+      }
+    ],
+    "checkall": "true",
+    "outputs": 2,
+    "x": 468.5,
+    "y": 353,
+    "wires": [
+      [
+        "308a2ef6.5a7732"
+      ],
+      [
+        "61fcb0b5.38db"
+      ]
+    ]
+  },
+  {
+    "id": "308a2ef6.5a7732",
+    "type": "function",
+    "z": "9d2506c8.a2f338",
+    "name": "Green",
+    "func": "return {\n    payload: '#008000'\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 636.5,
+    "y": 329,
+    "wires": [
+      [
+        "dcc59e1e.a9f75",
+        "aa91b9fc.936a38"
+      ]
+    ]
+  },
+  {
+    "id": "61fcb0b5.38db",
+    "type": "function",
+    "z": "9d2506c8.a2f338",
+    "name": "Red",
+    "func": "return {\n    payload: '#FF0000'\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 637,
+    "y": 372,
+    "wires": [
+      [
+        "dcc59e1e.a9f75",
+        "aa91b9fc.936a38"
+      ]
+    ]
+  },
+  {
+    "id": "b39c0ca6.b525c",
+    "type": "inject",
+    "z": "9d2506c8.a2f338",
+    "name": "",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 455,
+    "y": 253,
+    "wires": [
+      [
+        "308a2ef6.5a7732"
+      ]
+    ]
+  },
+  {
+    "id": "92fd571.c9319a8",
+    "type": "inject",
+    "z": "9d2506c8.a2f338",
+    "name": "",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 452,
+    "y": 419,
+    "wires": [
+      [
+        "61fcb0b5.38db"
+      ]
+    ]
+  },
+  {
+    "id": "dcc59e1e.a9f75",
+    "type": "ui_template",
+    "z": "9d2506c8.a2f338",
+    "group": "db4e95a7.cebdb8",
+    "name": "My Test",
+    "order": 0,
+    "width": "0",
+    "height": "0",
+    "format": "<style>\n  .circle {\n  display: block;\n  background: black;\n  border-radius: 100%;\n  height: 60px;\n  width: 60px;\n  margin: auto;\n  background: radial-gradient(circle at 20px 20px, {{msg.payload}} 35%, #000);\n}  \n</style>\n<figure class=\"circle\"></figure>",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "x": 882,
+    "y": 355,
+    "wires": [
+      [
+        
+      ]
+    ]
+  },
+  {
+    "id": "af70c7cc.245f88",
+    "type": "catch",
+    "z": "8f76cecd.81571",
+    "name": "",
+    "scope": null,
+    "x": 531.5,
+    "y": 497,
+    "wires": [
+      [
+        "b234a120.57d9d"
+      ]
+    ]
+  },
+  {
+    "id": "b234a120.57d9d",
+    "type": "debug",
+    "z": "8f76cecd.81571",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "false",
+    "x": 755.5,
+    "y": 464,
+    "wires": [
+      
+    ]
+  }
+]
